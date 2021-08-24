@@ -11,11 +11,11 @@ function sassTranspile(){
 		.pipe(sass()
 			.on('error', sass.logError))
 		.pipe(postcss([autoprefixer()]))
-		.pipe(dest('./src/css', {sourcemaps: '.'}));
+		.pipe(dest('./dist/', {sourcemaps: '.'}));
 }
 // Minify and autoprefix css
 function cssBuild(){
-	return src('./src/css/style.css')
+	return src('./dist/style.css')
 		.pipe(postcss([cssnano()]))
 		.pipe(dest('./dist'));
 }
@@ -36,8 +36,8 @@ function browserSyncReload(cb){
 // Watch changes in files
 function watchFiles(){
 	watch('index.html', { usePolling: true}, browserSyncReload);
-	watch('./src/sass/style.sass', { usePolling: true}, series(sassTranspile, browserSyncReload));
-	//watch('./src/js/app.js')
+	watch('./src/**/*.sass', { usePolling: true}, series(sassTranspile, browserSyncReload));
+	watch('./src/js/app.js');
 }
 
 exports.build = cssBuild;
