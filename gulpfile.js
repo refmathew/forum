@@ -1,15 +1,15 @@
 const {dest,series,src,watch} = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+const scss = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
 
-// Transpile sass into css
-function sassTranspile(){
-	return src('./src/sass/style.sass', {sourcemaps: true})
-		.pipe(sass()
-			.on('error', sass.logError))
+// Transpile scss into css
+function scssTranspile(){
+	return src('./src/scss/style.scss', {sourcemaps: true})
+		.pipe(scss()
+			.on('error', scss.logError))
 		.pipe(postcss([autoprefixer()]))
 		.pipe(dest('./dist/', {sourcemaps: '.'}));
 }
@@ -37,7 +37,7 @@ function browserSyncReload(cb){
 // Watch changes in files
 function watchFiles(){
 	watch('index.html', { usePolling: true}, browserSyncReload);
-	watch('./src/**/*.sass',{ usePolling: true}, series(sassTranspile, browserSyncReload));
+	watch('./src/**/*.scss',{ usePolling: true}, series(scssTranspile, browserSyncReload));
 	watch('./src/js/app.js', { usePolling: true}, browserSyncReload);
 }
 
