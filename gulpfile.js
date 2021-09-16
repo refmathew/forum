@@ -36,7 +36,7 @@ function browserSyncReload(cb){
 }
 // Watch changes in files
 function watchFiles(){
-	watch('index.html', { usePolling: true}, browserSyncReload);
+	watch('index.php', { usePolling: true}, browserSyncReload);
 	watch('./src/**/*.scss',{ usePolling: true}, series(scssTranspile, browserSyncReload));
 	watch('./src/js/app.js', { usePolling: true}, browserSyncReload);
 }
