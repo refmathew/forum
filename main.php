@@ -8,6 +8,30 @@
   <link rel="stylesheet" href="dist/style.css" />
 </head>
 <body>
-  <script src="src/js/app.js"></script>
+  <div class="all-wrapper">
+    <main class="main">
+      <div class="header-wrapper wrapper">
+        <header class="header">
+          <span class="header__bscs">BSCS</span>
+          <span class="header__forum">forum</span>
+        </header>
+      </div>
+      <div class="form-wrapper wrapper">
+        <form class="form" action="src/php/insert.php" method="POST">
+          <textarea class="form__comment" name="comment" placeholder="Join the discussion..."></textarea>
+          <input type="text" class="form__username" name="username" placeholder="Username..." autocomplete="off" required/>
+          <button type="submit" name="submit" class="form__post-button">Post</button>
+        </form>
+      </div>
+    </main>
+    <div class="comment-section-wrapper wrapper">
+      <section class="comment-section">
+        <?php
+          include "src/php/show_data.php" ;
+        ?>
+      </section>
+    </div>
+  </div>
+
 </body>
 </html>
