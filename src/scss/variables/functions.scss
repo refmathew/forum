@@ -1,0 +1,9 @@
+@use 'sass:math';
+
+@function preferred($max){
+  @return math.div( $max, 14.398848092 );
+}
+
+@function pxToRem($px){
+  @return math.div( $px, 10 );
+}
