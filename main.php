@@ -17,7 +17,7 @@
         </header>
       </div>
       <div class="form-wrapper wrapper">
-        <form class="form" action="src/php/insert.php" method="POST">
+        <form class="form" action="dist/php/insert.php" method="POST">
           <textarea class="form__comment" name="comment" placeholder="Join the discussion..."></textarea>
           <input type="text" class="form__username" name="username" placeholder="Username..." autocomplete="off" required/>
           <button type="submit" name="submit" class="form__post-button">Post</button>
@@ -27,7 +27,7 @@
     <div class="comment-section-wrapper wrapper">
       <section class="comment-section">
         <?php
-          include "src/php/show_data.php" ;
+          include "dist/php/show_data.php" ;
         ?>
       </section>
     </div>
